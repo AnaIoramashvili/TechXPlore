@@ -35,7 +35,6 @@ struct Comment: Identifiable, Codable {
     let user: User
 }
 
-
 struct Organization: Identifiable, Codable {
     let id: Int
     let name: String

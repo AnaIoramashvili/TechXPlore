@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		595FA0072C39037D00DC13DE /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595FA0062C39037D00DC13DE /* LogInViewModel.swift */; };
+		595FA00A2C3903D000DC13DE /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595FA0092C3903D000DC13DE /* SignUpViewModel.swift */; };
 		59624E502C36B52B00D0D4C4 /* E_swavleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59624E4F2C36B52B00D0D4C4 /* E_swavleApp.swift */; };
 		59624E522C36B52B00D0D4C4 /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59624E512C36B52B00D0D4C4 /* GetStartedView.swift */; };
 		59624E542C36B52E00D0D4C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59624E532C36B52E00D0D4C4 /* Assets.xcassets */; };
@@ -32,9 +34,12 @@
 		59624EA42C38DD6F00D0D4C4 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59624EA32C38DD6F00D0D4C4 /* UserViewModel.swift */; };
 		59624EA62C38DE8100D0D4C4 /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59624EA52C38DE8100D0D4C4 /* StatView.swift */; };
 		59624EA82C38DE9B00D0D4C4 /* DetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59624EA72C38DE9B00D0D4C4 /* DetailRow.swift */; };
+		59624EAC2C39019500D0D4C4 /* TabBarViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59624EAB2C39019500D0D4C4 /* TabBarViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		595FA0062C39037D00DC13DE /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
+		595FA0092C3903D000DC13DE /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		59624E4C2C36B52B00D0D4C4 /* E-swavle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "E-swavle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59624E4F2C36B52B00D0D4C4 /* E_swavleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E_swavleApp.swift; sourceTree = "<group>"; };
 		59624E512C36B52B00D0D4C4 /* GetStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView.swift; sourceTree = "<group>"; };
@@ -61,6 +66,7 @@
 		59624EA32C38DD6F00D0D4C4 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		59624EA52C38DE8100D0D4C4 /* StatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
 		59624EA72C38DE9B00D0D4C4 /* DetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRow.swift; sourceTree = "<group>"; };
+		59624EAB2C39019500D0D4C4 /* TabBarViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +81,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		595FA0052C39035400DC13DE /* ViewModell */ = {
+			isa = PBXGroup;
+			children = (
+				595FA0062C39037D00DC13DE /* LogInViewModel.swift */,
+			);
+			path = ViewModell;
+			sourceTree = "<group>";
+		};
+		595FA0082C3903C100DC13DE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				595FA0092C3903D000DC13DE /* SignUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		59624E432C36B52B00D0D4C4 = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +177,7 @@
 		59624E772C381B2600D0D4C4 /* LogIn */ = {
 			isa = PBXGroup;
 			children = (
+				595FA0052C39035400DC13DE /* ViewModell */,
 				59624E782C381C4600D0D4C4 /* View */,
 			);
 			path = LogIn;
@@ -216,6 +239,7 @@
 		59624E892C38CBC200D0D4C4 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				595FA0082C3903C100DC13DE /* ViewModel */,
 				59624E8A2C38CBED00D0D4C4 /* View */,
 			);
 			path = SignUp;
@@ -232,7 +256,7 @@
 		59624E8B2C38CC0200D0D4C4 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				59624E612C36FAC200D0D4C4 /* TabBarView.swift */,
+				59624EAA2C38F9FD00D0D4C4 /* View */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -256,7 +280,7 @@
 		59624E8F2C38CC7800D0D4C4 /* Start */ = {
 			isa = PBXGroup;
 			children = (
-				59624E512C36B52B00D0D4C4 /* GetStartedView.swift */,
+				59624EA92C38F9D800D0D4C4 /* View */,
 			);
 			path = Start;
 			sourceTree = "<group>";
@@ -322,6 +346,23 @@
 				59624E632C36FAD900D0D4C4 /* ProfileView.swift */,
 				59624EA52C38DE8100D0D4C4 /* StatView.swift */,
 				59624EA72C38DE9B00D0D4C4 /* DetailRow.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		59624EA92C38F9D800D0D4C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				59624E512C36B52B00D0D4C4 /* GetStartedView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		59624EAA2C38F9FD00D0D4C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				59624E612C36FAC200D0D4C4 /* TabBarView.swift */,
+				59624EAB2C39019500D0D4C4 /* TabBarViewExtension.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -406,6 +447,7 @@
 				59624EA02C38D11F00D0D4C4 /* SearchBar.swift in Sources */,
 				59624E682C36FAF300D0D4C4 /* RecommendedCoursesView.swift in Sources */,
 				59624EA82C38DE9B00D0D4C4 /* DetailRow.swift in Sources */,
+				595FA0072C39037D00DC13DE /* LogInViewModel.swift in Sources */,
 				59624E502C36B52B00D0D4C4 /* E_swavleApp.swift in Sources */,
 				59624E662C36FAE500D0D4C4 /* LeaderBoardView.swift in Sources */,
 				59624E722C373AED00D0D4C4 /* UserCellView.swift in Sources */,
@@ -414,6 +456,7 @@
 				59624E622C36FAC200D0D4C4 /* TabBarView.swift in Sources */,
 				59624E642C36FAD900D0D4C4 /* ProfileView.swift in Sources */,
 				59624E942C38CF9A00D0D4C4 /* Course.swift in Sources */,
+				59624EAC2C39019500D0D4C4 /* TabBarViewExtension.swift in Sources */,
 				59624E9C2C38D09000D0D4C4 /* FilterView.swift in Sources */,
 				59624E842C38B3D700D0D4C4 /* LeaderBoardViewModel.swift in Sources */,
 				59624EA42C38DD6F00D0D4C4 /* UserViewModel.swift in Sources */,
@@ -422,6 +465,7 @@
 				59624E6E2C372F8D00D0D4C4 /* SignUpView.swift in Sources */,
 				59624E752C37E48600D0D4C4 /* HomeView.swift in Sources */,
 				59624E982C38CFF000D0D4C4 /* CourseViewModel.swift in Sources */,
+				595FA00A2C3903D000DC13DE /* SignUpViewModel.swift in Sources */,
 				59624E702C373AB000D0D4C4 /* User.swift in Sources */,
 				59624E5E2C36B61E00D0D4C4 /* SplashScreenView.swift in Sources */,
 			);

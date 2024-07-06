@@ -196,9 +196,6 @@ struct BusinessPartners: View {
             Image("tbc")
                 .resizable()
                 .frame(width: 160, height: 50)
-//            Image("liberty")
-//                .resizable()
-//                .frame(width: 140, height: 80)
         }
         .padding()
         .frame(maxWidth: .infinity)

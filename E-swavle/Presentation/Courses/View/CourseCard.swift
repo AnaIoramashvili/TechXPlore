@@ -11,7 +11,7 @@ struct CourseCard: View {
     let course: Course
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 8) {
             AsyncImage(url: URL(string: course.thumbnailURL)) { image in
                 image
                     .resizable()
@@ -19,19 +19,19 @@ struct CourseCard: View {
             } placeholder: {
                 ProgressView()
             }
-            .frame(height: 120)
+            .frame(width: 140, height: 100 )
             .clipShape(RoundedRectangle(cornerRadius: 10))
 
-            Text(course.title)
-                .font(.system(size: 14, weight: .semibold))
-                .lineLimit(1)
+            Text(String(course.title.prefix(15)) + (course.title.count > 15 ? "..." : ""))
+                .font(.system(size: 12, weight: .semibold))
+                .lineLimit(2)
 
             Text(course.author)
-                .font(.system(size: 12))
+                .font(.system(size: 10))
                 .foregroundColor(.secondary)
-                .lineLimit(1) 
+                .lineLimit(1)
         }
-        .frame(width: 160, height: 180)
+        .frame(width: 150, height: 160)
         .padding(8)
         .background(Color.white)
         .cornerRadius(15)

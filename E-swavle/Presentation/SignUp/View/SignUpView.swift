@@ -9,13 +9,7 @@ import SwiftUI
 
 struct SignUpView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State private var navigateToHome = false
-    @State private var email = ""
-    @State private var password = ""
-    @State private var confirmPassword = ""
-    @State private var isEmailValid = true
-    @State private var isPasswordValid = true
-    @State private var doPasswordsMatch = true
+    @StateObject private var viewModel = SignUpViewModel()
 
     var body: some View {
         NavigationStack {
@@ -34,7 +28,7 @@ struct SignUpView: View {
                             .foregroundColor(.white)
                             .padding(.leading, 25)
                         
-                        TextField("", text: $email)
+                        TextField("", text: $viewModel.email)
                             .padding()
                             .background(Color.white.opacity(0.2))
                             .foregroundColor(.white)
@@ -43,7 +37,7 @@ struct SignUpView: View {
                             .autocapitalization(.none)
                             .keyboardType(.emailAddress)
                         
-                        if !isEmailValid {
+                        if !viewModel.isEmailValid {
                             Text("არასწორი E-მეილი ფორმატი")
                                 .foregroundColor(.red)
                                 .padding(.leading, 25)
@@ -53,14 +47,14 @@ struct SignUpView: View {
                             .foregroundColor(.white)
                             .padding(.leading, 25)
                         
-                        SecureField("", text: $password)
+                        SecureField("", text: $viewModel.password)
                             .padding()
                             .background(Color.white.opacity(0.2))
                             .foregroundColor(.white)
                             .cornerRadius(25)
                             .padding(.horizontal)
                         
-                        if !isPasswordValid {
+                        if !viewModel.isPasswordValid {
                             Text("პაროლი უნდა შეიცავდეს მინიმუმ 8 სიმბოლოს")
                                 .foregroundColor(.red)
                                 .padding(.leading, 25)
@@ -70,21 +64,21 @@ struct SignUpView: View {
                             .foregroundColor(.white)
                             .padding(.leading, 25)
                         
-                        SecureField("", text: $confirmPassword)
+                        SecureField("", text: $viewModel.confirmPassword)
                             .padding()
                             .background(Color.white.opacity(0.2))
                             .foregroundColor(.white)
                             .cornerRadius(25)
                             .padding(.horizontal)
                         
-                        if !doPasswordsMatch {
+                        if !viewModel.doPasswordsMatch {
                             Text("პაროლები არ ემთხვევა")
                                 .foregroundColor(.red)
                                 .padding(.leading, 25)
                         }
                     }
                     
-                    Button(action: validateAndNavigate) {
+                    Button(action: viewModel.validateAndNavigate) {
                         Text("რეგისტრაცია")
                             .foregroundColor(.black)
                             .padding(.vertical, 15)
@@ -97,7 +91,7 @@ struct SignUpView: View {
                     Spacer()
                 }
             }
-            .navigationDestination(isPresented: $navigateToHome) {
+            .navigationDestination(isPresented: $viewModel.navigateToHome) {
                 TabBarView().navigationBarBackButtonHidden(true)
             }
             .navigationBarBackButtonHidden(true)
@@ -117,26 +111,10 @@ struct SignUpView: View {
             Image(systemName: "arrow.left")
                 .foregroundColor(.black)
                 .imageScale(.large)
-
         }
-    }
-    
-    private func validateAndNavigate() {
-        isEmailValid = isValidEmail(email)
-        isPasswordValid = password.count >= 8
-        doPasswordsMatch = password == confirmPassword
-        
-        if isEmailValid && isPasswordValid && doPasswordsMatch {
-            navigateToHome = true
-        }
-    }
-    
-    private func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
     }
 }
+
 
 #Preview {
     SignUpView()

@@ -17,7 +17,7 @@ struct GetStartedView: View {
                     .resizable()
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
-                
+
                 VStack {
                     Spacer()
                     

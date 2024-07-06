@@ -8,12 +8,8 @@
 import SwiftUI
 
 struct LogInView: View {
-    @State private var navigateToHome = false
+    @StateObject private var viewModel = LoginViewModel()
     @State private var navigateToSignUp = false
-    @State private var email = ""
-    @State private var password = ""
-    @State private var isEmailValid = true
-    @State private var isPasswordValid = true
 
     var body: some View {
         NavigationStack {
@@ -34,7 +30,7 @@ struct LogInView: View {
                             .foregroundColor(.white)
                             .padding(.leading, 25)
                         
-                        TextField("", text: $email)
+                        TextField("", text: $viewModel.email)
                             .padding()
                             .background(Color.white.opacity(0.2))
                             .foregroundColor(.white)
@@ -43,7 +39,7 @@ struct LogInView: View {
                             .autocapitalization(.none)
                             .keyboardType(.emailAddress)
                         
-                        if !isEmailValid {
+                        if !viewModel.isEmailValid {
                             Text("არასწორი E-მეილი ფორმატი")
                                 .foregroundColor(.red)
                                 .padding(.leading, 25)
@@ -53,21 +49,21 @@ struct LogInView: View {
                             .foregroundColor(.white)
                             .padding(.leading, 25)
                         
-                        SecureField("", text: $password)
+                        SecureField("", text: $viewModel.password)
                             .padding()
                             .background(Color.white.opacity(0.2))
                             .foregroundColor(.white)
                             .cornerRadius(25)
                             .padding(.horizontal)
                         
-                        if !isPasswordValid {
+                        if !viewModel.isPasswordValid {
                             Text("პაროლი უნდა შეიცავდეს მინიმუმ 8 სიმბოლოს")
                                 .foregroundColor(.red)
                                 .padding(.leading, 25)
                         }
                     }
                     
-                    Button(action: validateInputs) {
+                    Button(action: viewModel.validateInputs) {
                         Text("შესვლა")
                             .foregroundColor(.black)
                             .padding(.vertical, 15)
@@ -79,7 +75,6 @@ struct LogInView: View {
                     
                     Spacer()
 
-                    
                     HStack {
                         Text("არ გაქვს ექაუნთი?")
                             .foregroundColor(.white)
@@ -92,7 +87,7 @@ struct LogInView: View {
                     .padding(.bottom, 60)
                 }
             }
-            .navigationDestination(isPresented: $navigateToHome) {
+            .navigationDestination(isPresented: $viewModel.navigateToHome) {
                 TabBarView()
                     .navigationBarBackButtonHidden(true)
             }
@@ -103,21 +98,10 @@ struct LogInView: View {
         }
         .navigationBarBackButtonHidden(true)
     }
-    
-    private func validateInputs() {
-        isEmailValid = isValidEmail(email)
-        isPasswordValid = password.count >= 8
-        
-        if isEmailValid && isPasswordValid {
-            navigateToHome = true
-        }
-    }
-    
-    private func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
-    }
+}
+
+#Preview {
+    LogInView()
 }
 
 

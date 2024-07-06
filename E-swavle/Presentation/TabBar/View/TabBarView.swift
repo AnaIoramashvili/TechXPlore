@@ -41,7 +41,6 @@ enum TabbedItems: Int, CaseIterable {
 }
 
 struct TabBarView: View {
-    
     @State var selectedTab = 0
     
     var body: some View {
@@ -81,29 +80,6 @@ struct TabBarView: View {
         .accentColor(.black)
         .navigationBarBackButtonHidden(true)
     }
-}
-
-extension TabBarView {
-    func CustomTabItem(imageName: String, title: String, isActive: Bool) -> some View {
-        HStack(spacing: 10) {
-            Image(systemName: imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .foregroundColor(isActive ? .black : .gray)
-                .frame(width: 20, height: 20)
-            
-            if isActive {
-                Text(title)
-                    .font(.system(size: 14))
-                    .foregroundColor(.black)
-            }
-        }
-        .frame(minWidth: 60, idealWidth: isActive ? 150 : 60)
-        .padding(isActive ? 10 : 0) 
-        .background(isActive ? Color.purple.opacity(0.6) : .clear)
-        .cornerRadius(30)
-    }
-    
 }
 
 #Preview {
