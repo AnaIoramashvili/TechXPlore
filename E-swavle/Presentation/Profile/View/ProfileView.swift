@@ -42,14 +42,14 @@ struct ProfileView: View {
                     )
                     
                     HStack(spacing: 20) {
-                        StatView(title: "Level", value: viewModel.userLevel, color: .green)
-                        StatView(title: "Points", value: "\(user.points)", color: .orange)
+                        StatView(title: "დონე", value: viewModel.userLevel, color: .green)
+                        StatView(title: "ქულა", value: "\(user.points)", color: .orange)
                     }
                     
                     VStack(spacing: 20) {
-                        DetailRow(icon: "envelope", title: "Email", value: user.email)
-                        DetailRow(icon: "calendar", title: "Birth Date", value: "20/03/2002")
-                        DetailRow(icon: "person", title: "Gender", value: viewModel.gender)
+                        DetailRow(icon: "envelope", title: "E-მეილი", value: user.email)
+                        DetailRow(icon: "calendar", title: "დაბადების თარიღი", value: "20/03/2002")
+                        DetailRow(icon: "person", title: "სქესი", value: viewModel.gender)
                     }
                     .padding()
                     .background(
