@@ -46,7 +46,7 @@ struct HomeView: View {
                     
                     TokenView(imageName: "token_icon", tokenCount: 100)
 
-                    BusinessPartners(imageName: "token_icon")
+                    BusinessPartners()
                     
                     Spacer()
                 }
@@ -108,7 +108,6 @@ struct WhatToLearnView: View {
                 .cornerRadius(20)
             }
             Spacer()
-            //შევცვალო ფოტო
             Image("learn_illustration")
                 .resizable()
                 .frame(width: 80, height: 80)
@@ -189,23 +188,23 @@ struct TokenView: View {
 }
 
 struct BusinessPartners: View {
-    let imageName: String
     
     var body: some View {
-        HStack {
-//            Text("ბიზნეს პარტნიორები")
-//                .font(.headline)
+        VStack {
+            Text("ბიზნეს პარტნიორი")
+                .font(.headline)
             Image("tbc")
                 .resizable()
-                .frame(width: 150, height: 60)
-            Spacer()
-            Image("liberty")
-                .resizable()
-                .frame(width: 140, height: 80)
+                .frame(width: 160, height: 50)
+//            Image("liberty")
+//                .resizable()
+//                .frame(width: 140, height: 80)
         }
         .padding()
-        .background(.white)
+        .frame(maxWidth: .infinity)
+        .background(Color.white)
         .cornerRadius(10)
+        .padding(.horizontal, 0)
     }
     
 }

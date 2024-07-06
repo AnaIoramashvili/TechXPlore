@@ -18,12 +18,15 @@ struct UserCellView: View {
                     .fill(rankColor)
                     .frame(width: 80, height: 80)
                 
-                Image(user.profilePicture)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 70, height: 70)
-                    .clipShape(Circle())
-                    .overlay(Circle().stroke(Color.white, lineWidth: 2))
+                AsyncImage(url: URL(string: user.profilePictureUrl)) { image in
+                    image.resizable()
+                } placeholder: {
+                    ProgressView()
+                }
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 70, height: 70)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.white, lineWidth: 2))
                 
                 Text("\(rank)")
                     .font(.system(size: 20, weight: .bold))
@@ -34,14 +37,14 @@ struct UserCellView: View {
             }
             
             VStack(alignment: .leading, spacing: 8) {
-                Text("\(user.name) \(user.lastName)")
+                Text("\(user.name) \(user.lastname)")
                     .font(.title3)
                     .fontWeight(.semibold)
                 
-                InfoRow(icon: "calendar", text: user.birthdate)
-                InfoRow(icon: "person", text: user.gender)
-                InfoRow(icon: "star.fill", text: "\(user.points) points")
-                InfoRow(icon: "chart.bar.fill", text: "Level \(user.level)")
+                InfoRow(icon: "calendar", text: formatDate(user.birthDate))
+                InfoRow(icon: "person", text: user.gender ? "მამრობითი" : "მდედრობითი")
+                InfoRow(icon: "star.fill", text: "\(user.points) ქულა")
+                InfoRow(icon: "chart.bar.fill", text: "დონე \(getLevelString(user.level))")
                 InfoRow(icon: "globe", text: user.country)
                 InfoRow(icon: "envelope.fill", text: user.email)
                     .foregroundColor(.blue)
@@ -63,6 +66,29 @@ struct UserCellView: View {
             return .orange
         default:
             return .blue.opacity(0.6)
+        }
+    }
+    
+    private func formatDate(_ dateString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSS"
+        if let date = dateFormatter.date(from: dateString) {
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            return dateFormatter.string(from: date)
+        }
+        return dateString
+    }
+    
+    private func getLevelString(_ level: Int) -> String {
+        switch level {
+        case 0:
+            return "Junior"
+        case 1:
+            return "Middle"
+        case 2:
+            return "Senior"
+        default:
+            return "Unknown"
         }
     }
 }

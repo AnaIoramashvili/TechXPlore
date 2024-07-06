@@ -74,7 +74,7 @@ struct TabBarView: View {
                 .padding(6)
             }
             .frame(height: 70)
-            .background(Color.black.opacity(0.9))
+            .background(Color.black.opacity(0.8))
             .cornerRadius(35)
             .padding(.horizontal, 26)
         }
@@ -86,23 +86,24 @@ struct TabBarView: View {
 extension TabBarView {
     func CustomTabItem(imageName: String, title: String, isActive: Bool) -> some View {
         HStack(spacing: 10) {
-            Spacer()
             Image(systemName: imageName)
                 .resizable()
-                .renderingMode(.template)
+                .aspectRatio(contentMode: .fit)
                 .foregroundColor(isActive ? .black : .gray)
                 .frame(width: 20, height: 20)
+            
             if isActive {
                 Text(title)
                     .font(.system(size: 14))
-                    .foregroundColor(isActive ? .black : .gray)
+                    .foregroundColor(.black)
             }
-            Spacer()
         }
-        .frame(width: isActive ? .infinity : 60, height: 60)
-        .background(isActive ? Color.purple.opacity(0.4) : .clear)
+        .frame(minWidth: 60, idealWidth: isActive ? 150 : 60)
+        .padding(isActive ? 10 : 0) 
+        .background(isActive ? Color.purple.opacity(0.6) : .clear)
         .cornerRadius(30)
     }
+    
 }
 
 #Preview {

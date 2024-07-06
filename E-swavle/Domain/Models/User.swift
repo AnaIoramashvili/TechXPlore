@@ -7,15 +7,16 @@
 
 import Foundation
 
-struct User: Identifiable {
-    let id = UUID()
-    let profilePicture: String 
+struct User: Identifiable, Codable {
+    let id: Int
     let name: String
-    let lastName: String
-    let birthdate: String
-    let gender: String
+    let lastname: String
+    let birthDate: String
+    let gender: Bool
+    let profilePictureUrl: String
     let points: Int
-    let level: String
     let country: String
+    let level: Int
+    let username: String
     let email: String
 }

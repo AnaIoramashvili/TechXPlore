@@ -78,10 +78,16 @@ struct LogInView: View {
                     .padding(.top, 30)
                     
                     Spacer()
+
                     
-                    Button(action: { navigateToSignUp = true }) {
-                        Text("არ გაქვს ექაუნთი? დარეგისტრირდი")
+                    HStack {
+                        Text("არ გაქვს ექაუნთი?")
                             .foregroundColor(.white)
+                        
+                        Button(action: { navigateToSignUp = true }) {
+                            Text("დარეგისტრირდი")
+                                .foregroundColor(.blue)
+                        }
                     }
                     .padding(.bottom, 60)
                 }
@@ -113,6 +119,7 @@ struct LogInView: View {
         return emailPred.evaluate(with: email)
     }
 }
+
 
 #Preview {
     LogInView()

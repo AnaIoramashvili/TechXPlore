@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SignUpView: View {
+    @Environment(\.presentationMode) var presentationMode
     @State private var navigateToHome = false
     @State private var email = ""
     @State private var password = ""
@@ -99,12 +100,25 @@ struct SignUpView: View {
             .navigationDestination(isPresented: $navigateToHome) {
                 TabBarView().navigationBarBackButtonHidden(true)
             }
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: backButton)
         }
     }
     
     private var backgroundColor: some View {
         Color(.myPurple)
             .ignoresSafeArea()
+    }
+    
+    private var backButton: some View {
+        Button(action: {
+            presentationMode.wrappedValue.dismiss()
+        }) {
+            Image(systemName: "arrow.left")
+                .foregroundColor(.black)
+                .imageScale(.large)
+
+        }
     }
     
     private func validateAndNavigate() {
@@ -123,8 +137,6 @@ struct SignUpView: View {
         return emailPred.evaluate(with: email)
     }
 }
-
-
 
 #Preview {
     SignUpView()
